@@ -1,0 +1,27 @@
+.map
+{
+    width: 100%; 
+    height: 500px; 
+    border: none;
+}
+
+.ecdf
+{
+    width: 100%;
+    height: 350px;
+    border: none;
+}
+
+.timeseries
+{
+    width: 100%;
+    height: 525px;
+    border: none;
+}
+
+.comparisons
+{
+    width: 100%;
+    height: 525px;
+    border: none;
+}

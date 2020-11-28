@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <!-- My CSS -->
+        <link rel="stylesheet" href="style.css">
+
+        <title>Summary - Lealia Xiong - 2020 SF Bay Data Exploration Challenge</title>
+    </head>
+
+    <body>
+        <div class="container-md">
+            <div class="bg-info text-light pt-1 pb-1 pl-1 pr-1">
+                <h1> 2020 San Francisco Bay Data Exploration Challenge</h1>
+                <h3> Lealia Xiong </h3>
+            </div>
+
+            <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="summary.html">Summary</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="supplementary.html">Supplementary information</a>
+                  </li>
+                </ul>
+              
+              </nav>
+
+            <h1 class="mt-3 mb-3"> Summary </h1>
+
+            <h2> Introduction </h2>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Mercury and polychlorinated biphenyls (PCBs) are two contaminants of concern for anglers in the San Francisco Bay. 
+                Mercury, in its elemental and methylmercury forms, can harm the nervous system. 
+                This can cause cognitive impairment, especially in children. 
+                Eating fish is the number one source of mercury exposure for Americans. 
+                Polychorinated biphenyls (PCBs) are industrial chemicals that were manufactured until 1979. 
+                A PCB congener is one chemical compound in the PCB category. 
+                There are 209 unique PCB congeners. 
+                PCBs can cause cancer as well as negatively affect the immune, reproductive, nervous, and endocrine systems. 
+                Despite the ban on PCB manufacturing, PCBs persist in the environment and can contaminate meat, dairy, water, and especially fish.
+
+            </p>
+
+            <h2> Methods </h2>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                I obtained data from the Contaminant Data Display and Download (CD3) tool of the San Francisco Estuary Institute. 
+                I used Python 3.8 for all analysis and visualization. 
+                I used the Pandas package for data cleaning and Geoviews, Holoviews, and Bokeh for visualization.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Because the data came from different collection times and stations, 
+                I examined the units the results were reported in to ensure the data were all comparable 
+                (see supplementary information). 
+                Because of a significant difference in the distribution of mercury concentrations in fish tissue in ug/g dry weight (dw) versus ug/g wet weight (ww), 
+                I chose to plot data using the two units separately for the time series analysis. 
+                Mercury concentrations in sediment were reported in ug/kg dw and mg/kg dw, 
+                which should differ by three orders of magnitude. 
+                However, my analysis led me to conclude that the data belonged to similar distributions and the difference in units may be an error in reporting.                
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Fish and sediment were not collected at the same coordinates, so I grouped the data by county to facilitate comparisons.
+            </p>
+
+            <h2> Findings </h2>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The EPA recommends that people avoid eating fish that contain over 0.46 ug/g mercury. 
+                In the San Francisco Bay, the concentration of mercury in fish has decreased since 2003 such that the majority of fish contain less than this threshold. 
+                In recent years (2011-2015), fish caught off Pier 40 contain the lowest concentrations of mercury. 
+                The mercury concentration in sediment from the Bay does not show any trends over time except for a recent spike in Contra Costa county (El Cerrito). 
+                There is not a strong correlation between mercury levels in sediment and in fish.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The US tolerance for total PCBs in fish is 2000 ng/g wet weight. 
+                None of the fish sampled in San Francisco Bay in 2009 and 2010 reached this level. 
+                However, over those two years, the level of total PCBs increased. 
+                Individual PCB congeners spanned from 0 to 100 ng/g in fish tissue; the maximum concentration for any individual congener did not change over time. 
+                However, sediment in San Mateo county spiked to over 0.1 g/g in 2010, over ten thousand times higher than the next highest measurement. 
+                However, sediment concentrations have recovered to typical levels. 
+                Although much less data is available for total PCBs than for mercury, increased total PCBs in sediment appears to correlate strongly with total PCBs in fish tissue.                
+            </p>
+
+            <div class="text-secondary bg-light pt-1 pb-1 pl-1 pr-1">
+                <h5> Citations </h5>
+                <h6> Data </h6>
+                <ul>
+                    <li>
+                        Contaminant Data Display and Download (CD3), <a href="https://cd3.sfei.org/">SFEI</a>
+                    </li>
+                </ul>
+                <h6> Analysis and visualization software </h6>
+                <p>Python 3.8, NumPy, Pandas, Bokeh, Holoviz, iqplot, bootcamp_utils</p>
+                <h6> Works cited and further reading </h6>
+                <ul>
+                    <li>
+                        "EPA-FDA Fish Advice: Technical Information," <a href="https://www.epa.gov/fish-tech/epa-fda-fish-advice-technical-information">EPA</a>
+                    </li>
+                    <li>
+                        "CFR - Code of Federal Regulations Title 21," <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/cfrsearch.cfm?fr=109.30">FDA</a>
+                    </li>
+                    <li>
+                        "Congener-specific levels and patterns of polychlorinated biphenyls in edible fish tissue from the central Red Sea coast of Saudi Arabia," 
+                        Batang, et al., 2016-12-01, <a href="https://www.sciencedirect.com/science/article/pii/S0048969716316618"><i>Science of The Total Environment</i></a>
+                    </li>
+                    <li>
+                        "Mercury and health," <a href="https://www.who.int/news-room/fact-sheets/detail/mercury-and-health">WHO</a>
+                    </li>
+                    <li>
+                        "I've heard that salmon is high in dangerous PCBs. So what are PCBs and what risk do they pose?," Jennifer K. Nelson, R.D., L.D.,
+                        <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/fish-and-pbcs/faq-20348595">Mayo Clinic</a>
+                    </li>
+                    <li>
+                        "Learn about Polychlorinated Biphenyls (PCBs)," <a href="https://www.epa.gov/pcbs/learn-about-polychlorinated-biphenyls-pcbs">EPA</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

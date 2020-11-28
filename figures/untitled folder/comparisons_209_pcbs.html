@@ -1,0 +1,553 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>comparisons_209_pcbs</title>
+      
+      
+        
+          
+        <style>
+            .widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, th, td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.2.min.js" integrity="sha384-ufR9RFnRs6lniiaFvtJziE0YeidtAgBRH6ux2oUItHw5WTvE1zuk9uzhUU/FJXDp" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="5a3c0c7d-a6f7-445d-9e41-5687037ee5d2" data-root-id="16842"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="17452">
+          {"23c94c5a-b24e-4bef-b152-be745ba5625d":{"roots":{"references":[{"attributes":{},"id":"16869","type":"PanTool"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"16873","type":"BoxAnnotation"},{"attributes":{"label":{"value":"San Francisco"},"renderers":[{"id":"16926"}]},"id":"16938","type":"LegendItem"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.75},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16923","type":"Scatter"},{"attributes":{"label":{"value":"Alameda"},"renderers":[{"id":"16893"}]},"id":"16902","type":"LegendItem"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.75},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16924","type":"Scatter"},{"attributes":{},"id":"16858","type":"LinearScale"},{"attributes":{"end":29.398927875,"reset_end":29.398927875,"reset_start":4.541702625000001,"start":4.541702625000001,"tags":[[["sediment median total pcbs","sediment median total pcbs",null]]]},"id":"16844","type":"Range1d"},{"attributes":{},"id":"16861","type":"BasicTicker"},{"attributes":{"axis":{"id":"16864"},"dimension":1,"ticker":{"id":"16865"}},"id":"16867","type":"Grid"},{"attributes":{},"id":"16868","type":"SaveTool"},{"attributes":{"axis_label":"fish tissue median total pcbs","axis_label_text_font_size":"19.5px","bounds":"auto","formatter":{"id":"16883"},"major_label_orientation":"horizontal","major_label_text_font_size":"16.5px","ticker":{"id":"16865"}},"id":"16864","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.2},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16925","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.2},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16908","type":"Scatter"},{"attributes":{"axis_label":"sediment median total pcbs","axis_label_text_font_size":"19.5px","bounds":"auto","formatter":{"id":"16881"},"major_label_orientation":"horizontal","major_label_text_font_size":"16.5px","ticker":{"id":"16861"}},"id":"16860","type":"LinearAxis"},{"attributes":{"children":[{"id":"16843"},{"id":"16851"},{"id":"17226"}],"margin":[0,0,0,0],"name":"Row62167","tags":["embedded"]},"id":"16842","type":"Row"},{"attributes":{"label":{"value":"Contra Costa"},"renderers":[{"id":"16909"}]},"id":"16919","type":"LegendItem"},{"attributes":{"below":[{"id":"16860"}],"center":[{"id":"16863"},{"id":"16867"},{"id":"17097"}],"frame_height":400,"frame_width":400,"left":[{"id":"16864"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":null,"plot_width":null,"renderers":[{"id":"16893"},{"id":"16909"},{"id":"16926"},{"id":"16945"},{"id":"16966"}],"right":[{"id":"16901"}],"sizing_mode":"fixed","title":{"id":"16852"},"toolbar":{"id":"16874"},"toolbar_location":"above","x_range":{"id":"16844"},"x_scale":{"id":"16856"},"y_range":{"id":"16845"},"y_scale":{"id":"16858"}},"id":"16851","subtype":"Figure","type":"Plot"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer62171","sizing_mode":"stretch_width"},"id":"16843","type":"Spacer"},{"attributes":{},"id":"16865","type":"BasicTicker"},{"attributes":{"axis":{"id":"16860"},"ticker":{"id":"16861"}},"id":"16863","type":"Grid"},{"attributes":{"source":{"id":"16887"}},"id":"16894","type":"CDSView"},{"attributes":{"source":{"id":"16939"}},"id":"16946","type":"CDSView"},{"attributes":{},"id":"16856","type":"LinearScale"},{"attributes":{"data":{"color":["#9367bc","#9367bc"],"county":["San Francisco","San Francisco"],"fish tissue median total pcbs":{"__ndarray__":"1qNwPQrTYUAgY+5aQopsQA==","dtype":"float64","shape":[2]},"fish_tissue_median_total_pcbs":{"__ndarray__":"1qNwPQrTYUAgY+5aQopsQA==","dtype":"float64","shape":[2]},"sediment median total pcbs":{"__ndarray__":"KJtyhXdhKECk2xK54EQ8QA==","dtype":"float64","shape":[2]},"sediment_median_total_pcbs":{"__ndarray__":"KJtyhXdhKECk2xK54EQ8QA==","dtype":"float64","shape":[2]},"year":[2009,2010]},"selected":{"id":"16921"},"selection_policy":{"id":"16957"}},"id":"16920","type":"ColumnDataSource"},{"attributes":{},"id":"16883","type":"BasicTickFormatter"},{"attributes":{},"id":"16872","type":"ResetTool"},{"attributes":{"data_source":{"id":"16939"},"glyph":{"id":"16942"},"hover_glyph":null,"muted_glyph":{"id":"16944"},"nonselection_glyph":{"id":"16943"},"selection_glyph":null,"view":{"id":"16946"}},"id":"16945","type":"GlyphRenderer"},{"attributes":{"data":{"color":["#8c564b","#8c564b"],"county":["San Mateo","San Mateo"],"fish tissue median total pcbs":{"__ndarray__":"+anx0k2iWUDIBz2bVUlwQA==","dtype":"float64","shape":[2]},"fish_tissue_median_total_pcbs":{"__ndarray__":"+anx0k2iWUDIBz2bVUlwQA==","dtype":"float64","shape":[2]},"sediment median total pcbs":{"__ndarray__":"nIcTmE5rMkCGV5I8178zQA==","dtype":"float64","shape":[2]},"sediment_median_total_pcbs":{"__ndarray__":"nIcTmE5rMkCGV5I8178zQA==","dtype":"float64","shape":[2]},"year":[2009,2010]},"selected":{"id":"16940"},"selection_policy":{"id":"16980"}},"id":"16939","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"16846"},{"id":"16868"},{"id":"16869"},{"id":"16870"},{"id":"16871"},{"id":"16872"}]},"id":"16874","type":"Toolbar"},{"attributes":{"label":{"value":"Solano"},"renderers":[{"id":"16966"}]},"id":"16982","type":"LegendItem"},{"attributes":{},"id":"16904","type":"Selection"},{"attributes":{},"id":"16870","type":"WheelZoomTool"},{"attributes":{"source":{"id":"16960"}},"id":"16967","type":"CDSView"},{"attributes":{"data":{"color":["#ff7e0e","#ff7e0e"],"county":["Contra Costa","Contra Costa"],"fish tissue median total pcbs":{"__ndarray__":"eOkmMQjsMkBCPujZrJthQA==","dtype":"float64","shape":[2]},"fish_tissue_median_total_pcbs":{"__ndarray__":"eOkmMQjsMkBCPujZrJthQA==","dtype":"float64","shape":[2]},"sediment median total pcbs":{"__ndarray__":"oKUr2EZ8GEB2Sgfr/1AjQA==","dtype":"float64","shape":[2]},"sediment_median_total_pcbs":{"__ndarray__":"oKUr2EZ8GEB2Sgfr/1AjQA==","dtype":"float64","shape":[2]},"year":[2009,2010]},"selected":{"id":"16904"},"selection_policy":{"id":"16936"}},"id":"16903","type":"ColumnDataSource"},{"attributes":{"label":{"value":"San Mateo"},"renderers":[{"id":"16945"}]},"id":"16959","type":"LegendItem"},{"attributes":{"callback":null,"renderers":[{"id":"16893"},{"id":"16909"},{"id":"16926"},{"id":"16945"},{"id":"16966"}],"tooltips":[["year","@year"],["sediment median total pcbs","$x"],["fish tissue median total pcbs","$y"]]},"id":"16846","type":"HoverTool"},{"attributes":{"text":"","text_font_size":{"value":"18pt"}},"id":"16852","type":"Title"},{"attributes":{"click_policy":"hide","items":[{"id":"16902"},{"id":"16919"},{"id":"16938"},{"id":"16959"},{"id":"16982"}],"label_text_font_size":"12.0pt","location":[10,100],"title_text_font_size":"19.5px"},"id":"16901","type":"Legend"},{"attributes":{},"id":"16888","type":"Selection"},{"attributes":{"gradient":8.537100463294767,"level":"glyph","line_color":"#30a2da","line_width":3,"y_intercept":8.627157268367293},"id":"17097","type":"Slope"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.75},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16963","type":"Scatter"},{"attributes":{},"id":"16936","type":"UnionRenderers"},{"attributes":{"source":{"id":"16903"}},"id":"16910","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.2},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16944","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.75},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16943","type":"Scatter"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer62172","sizing_mode":"stretch_width"},"id":"17226","type":"Spacer"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.75},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16907","type":"Scatter"},{"attributes":{},"id":"16940","type":"Selection"},{"attributes":{"overlay":{"id":"16873"}},"id":"16871","type":"BoxZoomTool"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.75},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16942","type":"Scatter"},{"attributes":{},"id":"16997","type":"UnionRenderers"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.2},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16965","type":"Scatter"},{"attributes":{"data_source":{"id":"16887"},"glyph":{"id":"16890"},"hover_glyph":null,"muted_glyph":{"id":"16892"},"nonselection_glyph":{"id":"16891"},"selection_glyph":null,"view":{"id":"16894"}},"id":"16893","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.75},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16890","type":"Scatter"},{"attributes":{},"id":"16961","type":"Selection"},{"attributes":{"data_source":{"id":"16960"},"glyph":{"id":"16963"},"hover_glyph":null,"muted_glyph":{"id":"16965"},"nonselection_glyph":{"id":"16964"},"selection_glyph":null,"view":{"id":"16967"}},"id":"16966","type":"GlyphRenderer"},{"attributes":{},"id":"16957","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"16903"},"glyph":{"id":"16906"},"hover_glyph":null,"muted_glyph":{"id":"16908"},"nonselection_glyph":{"id":"16907"},"selection_glyph":null,"view":{"id":"16910"}},"id":"16909","type":"GlyphRenderer"},{"attributes":{},"id":"16881","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.75},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16906","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.75},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16964","type":"Scatter"},{"attributes":{},"id":"16917","type":"UnionRenderers"},{"attributes":{"end":273.630685,"reset_end":273.630685,"reset_start":6.793014999999995,"start":6.793014999999995,"tags":[[["fish tissue median total pcbs","fish tissue median total pcbs",null]]]},"id":"16845","type":"Range1d"},{"attributes":{},"id":"16980","type":"UnionRenderers"},{"attributes":{"source":{"id":"16920"}},"id":"16927","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.75},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16891","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median total pcbs"},"y":{"field":"fish tissue median total pcbs"}},"id":"16892","type":"Scatter"},{"attributes":{"data":{"color":["#1f77b3","#1f77b3"],"county":["Alameda","Alameda"],"fish tissue median total pcbs":{"__ndarray__":"8rBQa5qFUEB0RpT2BlhwQA==","dtype":"float64","shape":[2]},"fish_tissue_median_total_pcbs":{"__ndarray__":"8rBQa5qFUEB0RpT2BlhwQA==","dtype":"float64","shape":[2]},"sediment median total pcbs":{"__ndarray__":"NGd9yjHhMkDXFMjsLCo1QA==","dtype":"float64","shape":[2]},"sediment_median_total_pcbs":{"__ndarray__":"NGd9yjHhMkDXFMjsLCo1QA==","dtype":"float64","shape":[2]},"year":[2009,2010]},"selected":{"id":"16888"},"selection_policy":{"id":"16917"}},"id":"16887","type":"ColumnDataSource"},{"attributes":{"data_source":{"id":"16920"},"glyph":{"id":"16923"},"hover_glyph":null,"muted_glyph":{"id":"16925"},"nonselection_glyph":{"id":"16924"},"selection_glyph":null,"view":{"id":"16927"}},"id":"16926","type":"GlyphRenderer"},{"attributes":{},"id":"16921","type":"Selection"},{"attributes":{"data":{"color":["#7e7e7e"],"county":["Solano"],"fish tissue median total pcbs":{"__ndarray__":"ofgx5q49SkA=","dtype":"float64","shape":[1]},"fish_tissue_median_total_pcbs":{"__ndarray__":"ofgx5q49SkA=","dtype":"float64","shape":[1]},"sediment median total pcbs":{"__ndarray__":"cAwBwLGvFkA=","dtype":"float64","shape":[1]},"sediment_median_total_pcbs":{"__ndarray__":"cAwBwLGvFkA=","dtype":"float64","shape":[1]},"year":[2010]},"selected":{"id":"16961"},"selection_policy":{"id":"16997"}},"id":"16960","type":"ColumnDataSource"}],"root_ids":["16842"]},"title":"Bokeh Application","version":"2.0.2"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('17452').textContent;
+                  var render_items = [{"docid":"23c94c5a-b24e-4bef-b152-be745ba5625d","root_ids":["16842"],"roots":{"16842":"5a3c0c7d-a6f7-445d-9e41-5687037ee5d2"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

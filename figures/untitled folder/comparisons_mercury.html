@@ -1,0 +1,553 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>comparisons_mercury</title>
+      
+      
+        
+          
+        <style>
+            .widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, th, td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.2.min.js" integrity="sha384-ufR9RFnRs6lniiaFvtJziE0YeidtAgBRH6ux2oUItHw5WTvE1zuk9uzhUU/FJXDp" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="65f5644a-8a93-4ab7-85cd-4d590f7fcd10" data-root-id="7765"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="8633">
+          {"8e310bc9-c8d1-4683-97e6-3da39b7a8194":{"roots":{"references":[{"attributes":{"axis":{"id":"7786"},"ticker":{"id":"7787"}},"id":"7789","type":"Grid"},{"attributes":{"data_source":{"id":"7865"},"glyph":{"id":"7868"},"hover_glyph":null,"muted_glyph":{"id":"7870"},"nonselection_glyph":{"id":"7869"},"selection_glyph":null,"view":{"id":"7872"}},"id":"7871","type":"GlyphRenderer"},{"attributes":{},"id":"7862","type":"UnionRenderers"},{"attributes":{},"id":"7791","type":"BasicTicker"},{"attributes":{"source":{"id":"7865"}},"id":"7872","type":"CDSView"},{"attributes":{"axis_label":"fish tissue median mercury","axis_label_text_font_size":"19.5px","bounds":"auto","formatter":{"id":"7809"},"major_label_orientation":"horizontal","major_label_text_font_size":"16.5px","ticker":{"id":"7791"}},"id":"7790","type":"LinearAxis"},{"attributes":{"label":{"value":"San Francisco"},"renderers":[{"id":"7871"}]},"id":"7885","type":"LegendItem"},{"attributes":{"axis":{"id":"7790"},"dimension":1,"ticker":{"id":"7791"}},"id":"7793","type":"Grid"},{"attributes":{},"id":"7795","type":"PanTool"},{"attributes":{"children":[{"id":"7766"},{"id":"7777"},{"id":"8323"}],"margin":[0,0,0,0],"name":"Row37363","tags":["embedded"]},"id":"7765","type":"Row"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.2},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7870","type":"Scatter"},{"attributes":{},"id":"7794","type":"SaveTool"},{"attributes":{"callback":null,"renderers":[{"id":"7819"},{"id":"7835"},{"id":"7852"},{"id":"7871"},{"id":"7892"},{"id":"7915"},{"id":"7940"},{"id":"7967"}],"tooltips":[["year","@year"],["sediment median mercury","$x"],["fish tissue median mercury","$y"]]},"id":"7769","type":"HoverTool"},{"attributes":{"source":{"id":"7886"}},"id":"7893","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.2},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7939","type":"Scatter"},{"attributes":{"data_source":{"id":"7934"},"glyph":{"id":"7937"},"hover_glyph":null,"muted_glyph":{"id":"7939"},"nonselection_glyph":{"id":"7938"},"selection_glyph":null,"view":{"id":"7941"}},"id":"7940","type":"GlyphRenderer"},{"attributes":{},"id":"7796","type":"WheelZoomTool"},{"attributes":{"label":{"value":"Solano"},"renderers":[{"id":"7940"}]},"id":"7960","type":"LegendItem"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer37367","sizing_mode":"stretch_width"},"id":"7766","type":"Spacer"},{"attributes":{"overlay":{"id":"7799"}},"id":"7797","type":"BoxZoomTool"},{"attributes":{},"id":"7883","type":"UnionRenderers"},{"attributes":{},"id":"7798","type":"ResetTool"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer37368","sizing_mode":"stretch_width"},"id":"8323","type":"Spacer"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.75},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7938","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.75},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7869","type":"Scatter"},{"attributes":{"source":{"id":"7934"}},"id":"7941","type":"CDSView"},{"attributes":{},"id":"7935","type":"Selection"},{"attributes":{},"id":"7866","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#7e7e7e"},"line_alpha":{"value":0.75},"line_color":{"value":"#7e7e7e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7937","type":"Scatter"},{"attributes":{},"id":"7962","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#9367bc"},"line_alpha":{"value":0.75},"line_color":{"value":"#9367bc"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7868","type":"Scatter"},{"attributes":{"gradient":0.06736588913504604,"level":"glyph","line_color":"#30a2da","line_width":3,"y_intercept":0.23511673868528443},"id":"8146","type":"Slope"},{"attributes":{},"id":"7958","type":"UnionRenderers"},{"attributes":{},"id":"7910","type":"Selection"},{"attributes":{"data_source":{"id":"7829"},"glyph":{"id":"7832"},"hover_glyph":null,"muted_glyph":{"id":"7834"},"nonselection_glyph":{"id":"7833"},"selection_glyph":null,"view":{"id":"7836"}},"id":"7835","type":"GlyphRenderer"},{"attributes":{"label":{"value":"San Mateo"},"renderers":[{"id":"7892"}]},"id":"7908","type":"LegendItem"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"7799","type":"BoxAnnotation"},{"attributes":{"data_source":{"id":"7886"},"glyph":{"id":"7889"},"hover_glyph":null,"muted_glyph":{"id":"7891"},"nonselection_glyph":{"id":"7890"},"selection_glyph":null,"view":{"id":"7893"}},"id":"7892","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.2},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7834","type":"Scatter"},{"attributes":{"label":{"value":"Contra Costa"},"renderers":[{"id":"7835"}]},"id":"7845","type":"LegendItem"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.2},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7891","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.75},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7833","type":"Scatter"},{"attributes":{},"id":"7887","type":"Selection"},{"attributes":{"source":{"id":"7829"}},"id":"7836","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.75},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7889","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#8c564b"},"line_alpha":{"value":0.75},"line_color":{"value":"#8c564b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7890","type":"Scatter"},{"attributes":{},"id":"7830","type":"Selection"},{"attributes":{},"id":"7814","type":"Selection"},{"attributes":{"label":{"value":"Sonoma"},"renderers":[{"id":"7967"}]},"id":"7989","type":"LegendItem"},{"attributes":{"data":{"color":["#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc","#9367bc"],"county":["San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco","San Francisco"],"fish tissue median mercury":{"__ndarray__":"6SYxCKwcuj/sUbgeheuhP05n4K0XttA/wMqhRbbzzT+oxks3iUHQP2QsqrDfNJc/Dz9TPQYcoT/4DWcM4L7FP65yJYOId8A/BDTdxz0Duz80MzMzMzOjPw==","dtype":"float64","shape":[11]},"fish_tissue_median_mercury":{"__ndarray__":"6SYxCKwcuj/sUbgeheuhP05n4K0XttA/wMqhRbbzzT+oxks3iUHQP2QsqrDfNJc/Dz9TPQYcoT/4DWcM4L7FP65yJYOId8A/BDTdxz0Duz80MzMzMzOjPw==","dtype":"float64","shape":[11]},"sediment median mercury":{"__ndarray__":"1iE3ww340j9KnYAmwobQP0LvOSJyKck/CQkK6RR32j8xCKwcWmTLP5BsdvCIpNE/fT81XrpJxD/HSzeJQWDVP1YOLbKd79c/0CLb+X5q1D8fhetRuB61Pw==","dtype":"float64","shape":[11]},"sediment_median_mercury":{"__ndarray__":"1iE3ww340j9KnYAmwobQP0LvOSJyKck/CQkK6RR32j8xCKwcWmTLP5BsdvCIpNE/fT81XrpJxD/HSzeJQWDVP1YOLbKd79c/0CLb+X5q1D8fhetRuB61Pw==","dtype":"float64","shape":[11]},"year":[1994,1995,1997,2000,2003,2005,2007,2008,2009,2010,2014]},"selected":{"id":"7866"},"selection_policy":{"id":"7906"}},"id":"7865","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#e277c1"},"line_alpha":{"value":0.2},"line_color":{"value":"#e277c1"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7914","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#ff7e0e"},"line_alpha":{"value":0.75},"line_color":{"value":"#ff7e0e"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7832","type":"Scatter"},{"attributes":{"data_source":{"id":"7846"},"glyph":{"id":"7849"},"hover_glyph":null,"muted_glyph":{"id":"7851"},"nonselection_glyph":{"id":"7850"},"selection_glyph":null,"view":{"id":"7853"}},"id":"7852","type":"GlyphRenderer"},{"attributes":{"data_source":{"id":"7961"},"glyph":{"id":"7964"},"hover_glyph":null,"muted_glyph":{"id":"7966"},"nonselection_glyph":{"id":"7965"},"selection_glyph":null,"view":{"id":"7968"}},"id":"7967","type":"GlyphRenderer"},{"attributes":{},"id":"7906","type":"UnionRenderers"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#bcbc21"},"line_alpha":{"value":0.2},"line_color":{"value":"#bcbc21"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7966","type":"Scatter"},{"attributes":{},"id":"7987","type":"UnionRenderers"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#bcbc21"},"line_alpha":{"value":0.75},"line_color":{"value":"#bcbc21"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7965","type":"Scatter"},{"attributes":{"source":{"id":"7961"}},"id":"7968","type":"CDSView"},{"attributes":{},"id":"7843","type":"UnionRenderers"},{"attributes":{"data":{"color":["#bcbc21"],"county":["Sonoma"],"fish tissue median mercury":{"__ndarray__":"H4XrUbgetT8=","dtype":"float64","shape":[1]},"fish_tissue_median_mercury":{"__ndarray__":"H4XrUbgetT8=","dtype":"float64","shape":[1]},"sediment median mercury":{"__ndarray__":"7nw/NV661T8=","dtype":"float64","shape":[1]},"sediment_median_mercury":{"__ndarray__":"7nw/NV661T8=","dtype":"float64","shape":[1]},"year":[1999]},"selected":{"id":"7962"},"selection_policy":{"id":"8010"}},"id":"7961","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"7769"},{"id":"7794"},{"id":"7795"},{"id":"7796"},{"id":"7797"},{"id":"7798"}]},"id":"7800","type":"Toolbar"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#bcbc21"},"line_alpha":{"value":0.75},"line_color":{"value":"#bcbc21"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7964","type":"Scatter"},{"attributes":{"below":[{"id":"7786"}],"center":[{"id":"7789"},{"id":"7793"},{"id":"8146"}],"frame_height":400,"frame_width":400,"left":[{"id":"7790"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":null,"plot_width":null,"renderers":[{"id":"7819"},{"id":"7835"},{"id":"7852"},{"id":"7871"},{"id":"7892"},{"id":"7915"},{"id":"7940"},{"id":"7967"}],"right":[{"id":"7827"}],"sizing_mode":"fixed","title":{"id":"7778"},"toolbar":{"id":"7800"},"toolbar_location":"above","x_range":{"id":"7767"},"x_scale":{"id":"7782"},"y_range":{"id":"7768"},"y_scale":{"id":"7784"}},"id":"7777","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"7807","type":"BasicTickFormatter"},{"attributes":{"label":{"value":"Santa Clara"},"renderers":[{"id":"7915"}]},"id":"7933","type":"LegendItem"},{"attributes":{"axis_label":"sediment median mercury","axis_label_text_font_size":"19.5px","bounds":"auto","formatter":{"id":"7807"},"major_label_orientation":"horizontal","major_label_text_font_size":"16.5px","ticker":{"id":"7787"}},"id":"7786","type":"LinearAxis"},{"attributes":{"data_source":{"id":"7909"},"glyph":{"id":"7912"},"hover_glyph":null,"muted_glyph":{"id":"7914"},"nonselection_glyph":{"id":"7913"},"selection_glyph":null,"view":{"id":"7916"}},"id":"7915","type":"GlyphRenderer"},{"attributes":{},"id":"7787","type":"BasicTicker"},{"attributes":{"label":{"value":"Alameda"},"renderers":[{"id":"7819"}]},"id":"7828","type":"LegendItem"},{"attributes":{},"id":"7809","type":"BasicTickFormatter"},{"attributes":{},"id":"7847","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#2ba02b"},"line_alpha":{"value":0.2},"line_color":{"value":"#2ba02b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7851","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#e277c1"},"line_alpha":{"value":0.75},"line_color":{"value":"#e277c1"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7913","type":"Scatter"},{"attributes":{"source":{"id":"7909"}},"id":"7916","type":"CDSView"},{"attributes":{"source":{"id":"7813"}},"id":"7820","type":"CDSView"},{"attributes":{"data":{"color":["#e277c1"],"county":["Santa Clara"],"fish tissue median mercury":{"__ndarray__":"mpmZmZmZuT8=","dtype":"float64","shape":[1]},"fish_tissue_median_mercury":{"__ndarray__":"mpmZmZmZuT8=","dtype":"float64","shape":[1]},"sediment median mercury":{"__ndarray__":"qeckLtyG2j8=","dtype":"float64","shape":[1]},"sediment_median_mercury":{"__ndarray__":"qeckLtyG2j8=","dtype":"float64","shape":[1]},"year":[2000]},"selected":{"id":"7910"},"selection_policy":{"id":"7958"}},"id":"7909","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#2ba02b"},"line_alpha":{"value":0.75},"line_color":{"value":"#2ba02b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7850","type":"Scatter"},{"attributes":{"click_policy":"hide","items":[{"id":"7828"},{"id":"7845"},{"id":"7864"},{"id":"7885"},{"id":"7908"},{"id":"7933"},{"id":"7960"},{"id":"7989"}],"label_text_font_size":"12.0pt","location":[10,100],"title_text_font_size":"19.5px"},"id":"7827","type":"Legend"},{"attributes":{"text":"","text_font_size":{"value":"18pt"}},"id":"7778","type":"Title"},{"attributes":{"source":{"id":"7846"}},"id":"7853","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.75},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7816","type":"Scatter"},{"attributes":{"end":0.47552,"reset_end":0.47552,"reset_start":0.03508,"start":0.03508,"tags":[[["sediment median mercury","sediment median mercury",null]]]},"id":"7767","type":"Range1d"},{"attributes":{"label":{"value":"Marin"},"renderers":[{"id":"7852"}]},"id":"7864","type":"LegendItem"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#e277c1"},"line_alpha":{"value":0.75},"line_color":{"value":"#e277c1"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7912","type":"Scatter"},{"attributes":{"data":{"color":["#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e","#7e7e7e"],"county":["Solano","Solano","Solano","Solano","Solano","Solano","Solano","Solano","Solano","Solano","Solano","Solano"],"fish tissue median mercury":{"__ndarray__":"cT0K16NwzT/sUbgehevRP+2RiTj2BPY/ogHEdloruz9tg4cnw0rHP1huq1H2s7o/vGhGQRt5oj+MIFm2knqqP3q5/EXY6cs/Jv6t0lwYyj/wNAAlQIXIP7TIdr6fGs8/","dtype":"float64","shape":[12]},"fish_tissue_median_mercury":{"__ndarray__":"cT0K16NwzT/sUbgehevRP+2RiTj2BPY/ogHEdloruz9tg4cnw0rHP1huq1H2s7o/vGhGQRt5oj+MIFm2knqqP3q5/EXY6cs/Jv6t0lwYyj/wNAAlQIXIP7TIdr6fGs8/","dtype":"float64","shape":[12]},"sediment median mercury":{"__ndarray__":"shafAmA8yz8MzXUaaanWP+bQItv5ftI/ew8R46c00j8AAAAAAADQP7fbdwqOAtE/ZBMXgkfUwj/UTWIQWDnMPxFYObTIds4/fmq8dJMYzD/fT42XbhLLPxdIUPwYc78/","dtype":"float64","shape":[12]},"sediment_median_mercury":{"__ndarray__":"shafAmA8yz8MzXUaaanWP+bQItv5ftI/ew8R46c00j8AAAAAAADQP7fbdwqOAtE/ZBMXgkfUwj/UTWIQWDnMPxFYObTIds4/fmq8dJMYzD/fT42XbhLLPxdIUPwYc78/","dtype":"float64","shape":[12]},"year":[1993,1994,1997,1998,1999,2000,2005,2007,2008,2009,2010,2014]},"selected":{"id":"7935"},"selection_policy":{"id":"7987"}},"id":"7934","type":"ColumnDataSource"},{"attributes":{},"id":"8010","type":"UnionRenderers"},{"attributes":{},"id":"7784","type":"LinearScale"},{"attributes":{"data":{"color":["#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3","#1f77b3"],"county":["Alameda","Alameda","Alameda","Alameda","Alameda","Alameda","Alameda","Alameda","Alameda","Alameda","Alameda"],"fish tissue median mercury":{"__ndarray__":"HoXrUbgexT/62awgJCDUP6abxCCwctg//Knx0k1i4j8N35c6lfqaP9nO91PjpcM/fz6wNAdApj8CMJEXQb/NP7M+XaDZps4/rcYmuq2TzT8xCKwcWmS7Pw==","dtype":"float64","shape":[11]},"fish_tissue_median_mercury":{"__ndarray__":"HoXrUbgexT/62awgJCDUP6abxCCwctg//Knx0k1i4j8N35c6lfqaP9nO91PjpcM/fz6wNAdApj8CMJEXQb/NP7M+XaDZps4/rcYmuq2TzT8xCKwcWmS7Pw==","dtype":"float64","shape":[11]},"sediment median mercury":{"__ndarray__":"jNZR1QRR0j9Ebkm418zRP4yDYmMSOdU/TO8xRI2D0T/IR5DsP0LTP65H4XoUrtM/Dy2yne+nxj8NAiuHFtnOPzLEsS5uo80/sHJoke180z8lBoGVQ4vQPw==","dtype":"float64","shape":[11]},"sediment_median_mercury":{"__ndarray__":"jNZR1QRR0j9Ebkm418zRP4yDYmMSOdU/TO8xRI2D0T/IR5DsP0LTP65H4XoUrtM/Dy2yne+nxj8NAiuHFtnOPzLEsS5uo80/sHJoke180z8lBoGVQ4vQPw==","dtype":"float64","shape":[11]},"year":[1994,1997,2000,2003,2005,2006,2007,2008,2009,2010,2014]},"selected":{"id":"7814"},"selection_policy":{"id":"7843"}},"id":"7813","type":"ColumnDataSource"},{"attributes":{"end":1.444113597675,"reset_end":1.444113597675,"reset_start":-0.049735257175,"start":-0.049735257175,"tags":[[["fish tissue median mercury","fish tissue median mercury",null]]]},"id":"7768","type":"Range1d"},{"attributes":{"data":{"color":["#2ba02b","#2ba02b","#2ba02b","#2ba02b","#2ba02b","#2ba02b","#2ba02b","#2ba02b","#2ba02b"],"county":["Marin","Marin","Marin","Marin","Marin","Marin","Marin","Marin","Marin"],"fish tissue median mercury":{"__ndarray__":"PQrXo3A96j+y2GDAFoTdPxfZzvdT49U/K4cW2c73yz8HCllplCahP0+GEHuUVqM/5ZdmXx430T/ExKEAZXzLP4vbOcBj6cs/","dtype":"float64","shape":[9]},"fish_tissue_median_mercury":{"__ndarray__":"PQrXo3A96j+y2GDAFoTdPxfZzvdT49U/K4cW2c73yz8HCllplCahP0+GEHuUVqM/5ZdmXx430T/ExKEAZXzLP4vbOcBj6cs/","dtype":"float64","shape":[9]},"sediment median mercury":{"__ndarray__":"zczMzMzM1D8qoi5rxUvOP0aqsJhfTc8/bhKDwMqh0T/25CI9kx3OPwAAAAAAANA/ObTIdr6f0j+HFtnO91PTP7x0kxgEVs4/","dtype":"float64","shape":[9]},"sediment_median_mercury":{"__ndarray__":"zczMzMzM1D8qoi5rxUvOP0aqsJhfTc8/bhKDwMqh0T/25CI9kx3OPwAAAAAAANA/ObTIdr6f0j+HFtnO91PTP7x0kxgEVs4/","dtype":"float64","shape":[9]},"year":[1994,1997,2000,2003,2005,2007,2008,2009,2010]},"selected":{"id":"7847"},"selection_policy":{"id":"7883"}},"id":"7846","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7818","type":"Scatter"},{"attributes":{"data_source":{"id":"7813"},"glyph":{"id":"7816"},"hover_glyph":null,"muted_glyph":{"id":"7818"},"nonselection_glyph":{"id":"7817"},"selection_glyph":null,"view":{"id":"7820"}},"id":"7819","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#2ba02b"},"line_alpha":{"value":0.75},"line_color":{"value":"#2ba02b"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7849","type":"Scatter"},{"attributes":{},"id":"7931","type":"UnionRenderers"},{"attributes":{"data":{"color":["#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e","#ff7e0e"],"county":["Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa","Contra Costa"],"fish tissue median mercury":{"__ndarray__":"6iYxCKwc0j/T5DmNesXxP9m3D1BMpLQ/PCi07hda2j8X2c73U+PnP99PjZduEsM/7FG4HoXr0T9s8kOOdT2tP8bvlnnlGcU/z/cCPfpnzj8lDbjFk4vHPxkEVg4tsq0/","dtype":"float64","shape":[12]},"fish_tissue_median_mercury":{"__ndarray__":"6iYxCKwc0j/T5DmNesXxP9m3D1BMpLQ/PCi07hda2j8X2c73U+PnP99PjZduEsM/7FG4HoXr0T9s8kOOdT2tP8bvlnnlGcU/z/cCPfpnzj8lDbjFk4vHPxkEVg4tsq0/","dtype":"float64","shape":[12]},"sediment median mercury":{"__ndarray__":"gZVDi2znuz8OvjCZKhjBP0vqBDQRNqw/OVAku3n6wz+q8dJNYhDQP6DxLivVpMo/1XjpJjEI1D/dJAaBlUPTP3e+nxov3cw/f2q8dJMYzD8AAAAAAADIP2zn+6nx0s0/","dtype":"float64","shape":[12]},"sediment_median_mercury":{"__ndarray__":"gZVDi2znuz8OvjCZKhjBP0vqBDQRNqw/OVAku3n6wz+q8dJNYhDQP6DxLivVpMo/1XjpJjEI1D/dJAaBlUPTP3e+nxov3cw/f2q8dJMYzD8AAAAAAADIP2zn+6nx0s0/","dtype":"float64","shape":[12]},"year":[1994,1997,1999,2000,2003,2005,2006,2007,2008,2009,2010,2014]},"selected":{"id":"7830"},"selection_policy":{"id":"7862"}},"id":"7829","type":"ColumnDataSource"},{"attributes":{"data":{"color":["#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b","#8c564b"],"county":["San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo","San Mateo"],"fish tissue median mercury":{"__ndarray__":"ZmZmZmZmxj/Sgu+0N8PnP+XQItv5fuo/yqFFtvP97D9ah2ZIXJqSP6abxCCwctA/t0PkcL3YqD9SEUkiazXKP0SLbOf7qcE//7zzuJoTwD/y0k1iEFi5Pw==","dtype":"float64","shape":[11]},"fish_tissue_median_mercury":{"__ndarray__":"ZmZmZmZmxj/Sgu+0N8PnP+XQItv5fuo/yqFFtvP97D9ah2ZIXJqSP6abxCCwctA/t0PkcL3YqD9SEUkiazXKP0SLbOf7qcE//7zzuJoTwD/y0k1iEFi5Pw==","dtype":"float64","shape":[11]},"sediment median mercury":{"__ndarray__":"8SkAxjNo0D8P5BDZVh/QP/1NamCSV9M/46WbxCCw0j9+uOa5fhTaP/T91HjpJt0/ZDvfT42Xxj+iRbbz/dTYP7gehetRuM4/F9nO91Pj2T/FILByaJHNPw==","dtype":"float64","shape":[11]},"sediment_median_mercury":{"__ndarray__":"8SkAxjNo0D8P5BDZVh/QP/1NamCSV9M/46WbxCCw0j9+uOa5fhTaP/T91HjpJt0/ZDvfT42Xxj+iRbbz/dTYP7gehetRuM4/F9nO91Pj2T/FILByaJHNPw==","dtype":"float64","shape":[11]},"year":[1994,1997,2000,2003,2005,2006,2007,2008,2009,2010,2014]},"selected":{"id":"7887"},"selection_policy":{"id":"7931"}},"id":"7886","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.75},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.75},"line_color":{"value":"#1f77b3"},"x":{"field":"sediment median mercury"},"y":{"field":"fish tissue median mercury"}},"id":"7817","type":"Scatter"},{"attributes":{},"id":"7782","type":"LinearScale"}],"root_ids":["7765"]},"title":"Bokeh Application","version":"2.0.2"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('8633').textContent;
+                  var render_items = [{"docid":"8e310bc9-c8d1-4683-97e6-3da39b7a8194","root_ids":["7765"],"roots":{"7765":"65f5644a-8a93-4ab7-85cd-4d590f7fcd10"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

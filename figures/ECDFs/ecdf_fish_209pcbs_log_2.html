@@ -1,0 +1,553 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Sum of 209 PCBs in fish</title>
+      
+      
+        
+          
+        <style>
+            .widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, th, td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.2.min.js" integrity="sha384-ufR9RFnRs6lniiaFvtJziE0YeidtAgBRH6ux2oUItHw5WTvE1zuk9uzhUU/FJXDp" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="ad552497-bed6-40aa-bb71-03aa72c4a5bf" data-root-id="10328"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="10710">
+          {"2dfb02b8-2bd3-406c-a230-443d056346b9":{"roots":{"references":[{"attributes":{"line_alpha":0.1,"line_color":"#1f77b3","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"10375","type":"Line"},{"attributes":{},"id":"10544","type":"UnionRenderers"},{"attributes":{},"id":"10401","type":"Selection"},{"attributes":{"data":{},"selected":{"id":"10543"},"selection_policy":{"id":"10544"}},"id":"10403","type":"ColumnDataSource"},{"attributes":{"source":{"id":"10387"}},"id":"10391","type":"CDSView"},{"attributes":{"text":""},"id":"10365","type":"Title"},{"attributes":{"below":[{"id":"10337"}],"center":[{"id":"10340"},{"id":"10344"},{"id":"10371"}],"frame_height":275,"frame_width":375,"left":[{"id":"10341"}],"renderers":[{"id":"10362"},{"id":"10376"},{"id":"10390"},{"id":"10406"}],"title":{"id":"10365"},"toolbar":{"id":"10352"},"x_range":{"id":"10329"},"x_scale":{"id":"10333"},"y_range":{"id":"10331"},"y_scale":{"id":"10335"}},"id":"10328","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"10386","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"10345"},{"id":"10346"},{"id":"10347"},{"id":"10348"},{"id":"10349"},{"id":"10350"}]},"id":"10352","type":"Toolbar"},{"attributes":{},"id":"10331","type":"DataRange1d"},{"attributes":{"data_source":{"id":"10387"},"glyph":{"id":"10388"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"10389"},"selection_glyph":null,"view":{"id":"10391"}},"id":"10390","type":"GlyphRenderer"},{"attributes":{"angle":{"units":"rad","value":0},"line_color":{"value":"#1f77b3"},"line_width":{"value":2},"x":{"value":1346.5738},"y":{"value":1}},"id":"10404","type":"Ray"},{"attributes":{"axis_label":"result","formatter":{"id":"10368"},"ticker":{"id":"10338"}},"id":"10337","type":"LogAxis"},{"attributes":{"angle":{"units":"rad","value":3.141592653589793},"line_color":{"value":"#1f77b3"},"line_width":{"value":2},"x":{"value":5.346},"y":{"value":0}},"id":"10388","type":"Ray"},{"attributes":{},"id":"10419","type":"Selection"},{"attributes":{"ticker":null},"id":"10368","type":"LogTickFormatter"},{"attributes":{},"id":"10346","type":"WheelZoomTool"},{"attributes":{},"id":"10402","type":"UnionRenderers"},{"attributes":{"line_color":"#1f77b3","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"10374","type":"Line"},{"attributes":{"click_policy":"hide","items":[{"id":"10372"}],"location":"bottom_right"},"id":"10371","type":"Legend"},{"attributes":{},"id":"10335","type":"LinearScale"},{"attributes":{},"id":"10366","type":"BasicTickFormatter"},{"attributes":{"label":{"value":"ng/g ww"},"renderers":[{"id":"10362"},{"id":"10376"},{"id":"10390"},{"id":"10406"}]},"id":"10372","type":"LegendItem"},{"attributes":{"data_source":{"id":"10403"},"glyph":{"id":"10404"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"10405"},"selection_glyph":null,"view":{"id":"10407"}},"id":"10406","type":"GlyphRenderer"},{"attributes":{},"id":"10345","type":"PanTool"},{"attributes":{"fill_alpha":0.1,"fill_color":"#1f77b3","line_alpha":0.1,"line_color":"#1f77b4","x":{"field":"x"},"y":{"field":"y"}},"id":"10361","type":"Patch"},{"attributes":{},"id":"10420","type":"UnionRenderers"},{"attributes":{},"id":"10543","type":"Selection"},{"attributes":{},"id":"10333","type":"LogScale"},{"attributes":{"data":{"x":{"__ndarray__":"/Knx0k1iFUD8qfHSTWIVQG3n+6nx0h5Abef7qfHSHkC1yHa+n9ogQLXIdr6f2iBA/WX35GEhIUD9ZffkYSEhQBAtsp3vpyFAEC2yne+nIUA730+Nl64pQDvfT42XrilAJQaBlUMLKkAlBoGVQwsqQB+F61G4nipAH4XrUbieKkDz/dR46eYsQPP91Hjp5ixAQDVeukmMLUBANV66SYwtQAwCK4cW2TBADAIrhxbZMECyne+nxosxQLKd76fGizFADi2yne/HMkAOLbKd78cyQOOlm8QgEDNA46WbxCAQM0D2KFyPwvUzQPYoXI/C9TNAGQRWDi1qNEAZBFYOLWo0QMZLN4lBgDdAxks3iUGAN0Cmm8QgsPI4QKabxCCw8jhAgpVDi2xHOUCClUOLbEc5QPT91HjpRjxA9P3UeOlGPEBvEoPAymFAQG8Sg8DKYUBA+n5qvHRzQED6fmq8dHNAQGEQWDm0mEJAYRBYObSYQkBFR3L5D/lCQEVHcvkP+UJAHlpkO9/fQ0AeWmQ7399DQOFPjZduMkRA4U+Nl24yREDcJAaBlfNFQNwkBoGV80VA//////9PRkD//////09GQLmNBvAWqEZAuY0G8BaoRkA3XrpJDEJHQDdeukkMQkdA5/up8dJFSEDn+6nx0kVIQKH4MeauPUpAofgx5q49SkDMf0i/fW1MQMx/SL99bUxAPQrXo3DtTUA9CtejcO1NQKRwPQrXM1BApHA9CtczUEBA8WPMXddQQEDxY8xd11BAn4AmwoYDUkCfgCbChgNSQHNoke18J1JAc2iR7XwnUkBmO99PjSdTQGY730+NJ1NANolBYOXQVEA2iUFg5dBUQNJ46SYxqFdA0njpJjGoV0ASg8DKoWVYQBKDwMqhZVhA+anx0k2iWUD5qfHSTaJZQCoxCKwcClpAKjEIrBwKWkBPjZduEnNbQE+Nl24Sc1tAYzvfT43/W0BjO99Pjf9bQP8qhxbZ3lxA/yqHFtneXEA3iUFg5XBdQDeJQWDlcF1AaWZmZmaGXUBpZmZmZoZdQCoxCKwcol1AKjEIrByiXUBoZmZmZs5dQGhmZmZmzl1A+n5qvHSrXkD6fmq8dKteQH3Qs1n1rV5AfdCzWfWtXkCtR+F6FBpgQK1H4XoUGmBA1qNwPQrTYUDWo3A9CtNhQHFoke18J2NAcWiR7XwnY0Du68A5I0hkQO7rwDkjSGRA0k1iEFiFZEDSTWIQWIVkQKd5xyk6LGVAp3nHKTosZUBhpu1fWThlQGGm7V9ZOGVAU7gehettZkBTuB6F621mQJwzorQ35GZAnDOitDfkZkDM7snDQnlpQMzuycNCeWlA2c73U+PVaUDZzvdT49VpQNBNYhBYuWpA0E1iEFi5akCSXP5D+htsQJJc/kP6G2xAJjEIrByKbEAmMQisHIpsQCBj7lpCimxAIGPuWkKKbEDIBz2bVUlwQMgHPZtVSXBAdEaU9gZYcEB0RpT2BlhwQK62Yn/ZzXRArrZif9nNdEB8YTJVMGx2QHxhMlUwbHZAr5RliGPoeECvlGWIY+h4QBFYObTI9HlAEVg5tMj0eUBlqmBU0t6FQGWqYFTS3oVAxyk6kksKlUDHKTqSSwqVQA==","dtype":"float64","shape":[152]},"y":{"__ndarray__":"AAAAAAAAAAAor6G8hvKKPyivobyG8oo/KK+hvIbymj8or6G8hvKaP15DeQ3lNaQ/XkN5DeU1pD8or6G8hvKqPyivobyG8qo/eQ3lNZTXsD95DeU1lNewP15DeQ3lNbQ/XkN5DeU1tD9DeQ3lNZS3P0N5DeU1lLc/KK+hvIbyuj8or6G8hvK6Pw3lNZTXUL4/DeU1lNdQvj95DeU1lNfAP3kN5TWU18A/bCivobyGwj9sKK+hvIbCP15DeQ3lNcQ/XkN5DeU1xD9RXkN5DeXFP1FeQ3kN5cU/Q3kN5TWUxz9DeQ3lNZTHPzaU11BeQ8k/NpTXUF5DyT8or6G8hvLKPyivobyG8so/G8prKK+hzD8bymsor6HMPw3lNZTXUM4/DeU1lNdQzj8AAAAAAADQPwAAAAAAANA/eQ3lNZTX0D95DeU1lNfQP/Maymsor9E/8xrKayiv0T9sKK+hvIbSP2wor6G8htI/5TWU11Be0z/lNZTXUF7TP15DeQ3lNdQ/XkN5DeU11D/YUF5DeQ3VP9hQXkN5DdU/UV5DeQ3l1T9RXkN5DeXVP8prKK+hvNY/ymsor6G81j9DeQ3lNZTXP0N5DeU1lNc/vYbyGspr2D+9hvIaymvYPzaU11BeQ9k/NpTXUF5D2T+vobyG8hraP6+hvIbyGto/KK+hvIby2j8or6G8hvLaP6K8hvIayts/oryG8hrK2z8bymsor6HcPxvKayivodw/lNdQXkN53T+U11BeQ3ndPw3lNZTXUN4/DeU1lNdQ3j+H8hrKayjfP4fyGsprKN8/AAAAAAAA4D8AAAAAAADgP72G8hrKa+A/vYbyGspr4D95DeU1lNfgP3kN5TWU1+A/NpTXUF5D4T82lNdQXkPhP/Maymsor+E/8xrKayiv4T+vobyG8hriP6+hvIbyGuI/bCivobyG4j9sKK+hvIbiPyivobyG8uI/KK+hvIby4j/lNZTXUF7jP+U1lNdQXuM/oryG8hrK4z+ivIbyGsrjP15DeQ3lNeQ/XkN5DeU15D8bymsor6HkPxvKayivoeQ/2FBeQ3kN5T/YUF5DeQ3lP5TXUF5DeeU/lNdQXkN55T9RXkN5DeXlP1FeQ3kN5eU/DeU1lNdQ5j8N5TWU11DmP8prKK+hvOY/ymsor6G85j+H8hrKayjnP4fyGsprKOc/Q3kN5TWU5z9DeQ3lNZTnPwAAAAAAAOg/AAAAAAAA6D+9hvIaymvoP72G8hrKa+g/eQ3lNZTX6D95DeU1lNfoPzaU11BeQ+k/NpTXUF5D6T/zGsprKK/pP/Maymsor+k/r6G8hvIa6j+vobyG8hrqP2wor6G8huo/bCivobyG6j8or6G8hvLqPyivobyG8uo/5TWU11Be6z/lNZTXUF7rP6K8hvIayus/oryG8hrK6z9eQ3kN5TXsP15DeQ3lNew/G8prKK+h7D8bymsor6HsP9hQXkN5De0/2FBeQ3kN7T+U11BeQ3ntP5TXUF5Dee0/UV5DeQ3l7T9RXkN5DeXtPw3lNZTXUO4/DeU1lNdQ7j/KayivobzuP8prKK+hvO4/h/Iaymso7z+H8hrKayjvP0N5DeU1lO8/Q3kN5TWU7z8AAAAAAADwPw==","dtype":"float64","shape":[152]}},"selected":{"id":"10401"},"selection_policy":{"id":"10402"}},"id":"10373","type":"ColumnDataSource"},{"attributes":{"axis":{"id":"10341"},"dimension":1,"ticker":null},"id":"10344","type":"Grid"},{"attributes":{"axis_label":"ECDF","formatter":{"id":"10366"},"ticker":{"id":"10342"}},"id":"10341","type":"LinearAxis"},{"attributes":{"overlay":{"id":"10351"}},"id":"10347","type":"BoxZoomTool"},{"attributes":{"source":{"id":"10403"}},"id":"10407","type":"CDSView"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","shape":[304]},"y":{"__ndarray__":"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","dtype":"float64","shape":[304]}},"selected":{"id":"10385"},"selection_policy":{"id":"10386"}},"id":"10359","type":"ColumnDataSource"},{"attributes":{"axis":{"id":"10337"},"ticker":null},"id":"10340","type":"Grid"},{"attributes":{"end":1000,"start":1},"id":"10329","type":"Range1d"},{"attributes":{"source":{"id":"10359"}},"id":"10363","type":"CDSView"},{"attributes":{},"id":"10350","type":"HelpTool"},{"attributes":{},"id":"10342","type":"BasicTicker"},{"attributes":{},"id":"10348","type":"SaveTool"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"10351","type":"BoxAnnotation"},{"attributes":{"angle":{"units":"rad","value":0},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b3"},"line_width":{"value":2},"x":{"value":1346.5738},"y":{"value":1}},"id":"10405","type":"Ray"},{"attributes":{},"id":"10349","type":"ResetTool"},{"attributes":{"data_source":{"id":"10359"},"glyph":{"id":"10360"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"10361"},"selection_glyph":null,"view":{"id":"10363"}},"id":"10362","type":"GlyphRenderer"},{"attributes":{"data_source":{"id":"10373"},"glyph":{"id":"10374"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"10375"},"selection_glyph":null,"view":{"id":"10377"}},"id":"10376","type":"GlyphRenderer"},{"attributes":{"source":{"id":"10373"}},"id":"10377","type":"CDSView"},{"attributes":{"fill_alpha":0.5,"fill_color":"#1f77b3","line_alpha":0,"line_color":"#1f77b4","x":{"field":"x"},"y":{"field":"y"}},"id":"10360","type":"Patch"},{"attributes":{"num_minor_ticks":10},"id":"10338","type":"LogTicker"},{"attributes":{"data":{},"selected":{"id":"10419"},"selection_policy":{"id":"10420"}},"id":"10387","type":"ColumnDataSource"},{"attributes":{},"id":"10385","type":"Selection"},{"attributes":{"angle":{"units":"rad","value":3.141592653589793},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b3"},"line_width":{"value":2},"x":{"value":5.346},"y":{"value":0}},"id":"10389","type":"Ray"}],"root_ids":["10328"]},"title":"Bokeh Application","version":"2.0.2"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('10710').textContent;
+                  var render_items = [{"docid":"2dfb02b8-2bd3-406c-a230-443d056346b9","root_ids":["10328"],"roots":{"10328":"ad552497-bed6-40aa-bb71-03aa72c4a5bf"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

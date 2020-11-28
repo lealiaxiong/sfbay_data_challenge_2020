@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <!-- My CSS -->
+        <link rel="stylesheet" href="style.css">
+
+        <title>Home - Lealia Xiong - 2020 SF Bay Data Exploration Challenge</title>
+    </head>
+
+    <body>
+        <div class="container-md">
+            <div class="bg-info text-light pt-1 pb-1 pl-1 pr-1">
+                <h1> 2020 San Francisco Bay Data Exploration Challenge</h1>
+                <h3> Lealia Xiong </h3>
+            </div>
+
+            <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="summary.html">Summary</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="supplementary.html">Supplementary information</a>
+                  </li>
+                </ul>
+              
+              </nav>
+
+            <h1 class="mt-3 mb-3"> Mercury and PCB contamination in San Francisco Bay </h1>
+
+            <h2> Mercury contamination in fish and sediment </h2>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Mercury, in its elemental and methylmercury forms, can harm the nervous system.
+                This can cause cognitive impairment, especially in children.
+                Eating fish is the number one source of mercury exposure for Americans.
+            </p>
+            
+            <h3> Geographical distribution of mercury contamination</h3>
+            <!-- Maps of contamination -->
+            <iframe src="figures/maps/maps_mercury.html" class="map">
+            </iframe>
+            <p class="text-center text-muted">
+                Use the dropdown to see the map at different points in time.
+                Use the tools at the top right to pan and zoom.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The most recent data for fish (2011-2015) indicate that Pier 40 is the safest place to fish in terms of mercury.
+                The most recent data for sediment (2016-2020) indicate high levels of mercury contamination in El Cerrito.
+            </p>
+
+            <h3> Mercury contamination over time</h3>
+
+            <iframe src="figures/timeseries/timeseries_mercury_fish.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                According to the EPA, people should avoid eating fish that contain over 0.46 ug/g mercury (red dashed line).
+                Since 2003, the mercury concentration in fish has decreased such that the majority of fish sampled contained less than this threshold.
+            </p>
+
+            <iframe src="figures/timeseries/timeseries_mercury_sediment.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The mercury concentration in sediment does not show any trends, except for a recent spike in Contra Costa county.          
+            </p>
+            
+            <h3> Correlation between mercury levels in fish and sediment </h3>
+            <iframe src="figures/comparisons/comparisons_mercury.html" class="comparisons">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Each data point represents the median concentration of mercury in fish and sediment in each county bordering the San Francisco Bay in each year for which data for both was available.
+                The blue line indicates the linear regression. 
+                There does not appear to be a strong correlation between mercury levels in sediment and fish tissue. 
+                Here, we did not distinguish between species of fish; due to bioaccumulation in the food chain, 
+                it is possible that certain species may be more affected by contamination in sediment. In addition, if 
+                fish migrate, they may accumulate mercury that is released into the environment elsewhere from where they were caught.
+            </p>
+
+            <h2>PCB contamination in fish and sediment</h2>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Polychorinated biphenyls (PCBs) are industrial chemicals that were manufactured until 1979.
+                A PCB congener is one chemical compound in the PCB category. There are 209 unique PCB congeners.
+                PCBs can cause cancer as well as negatively affect the immune, reproductive, nervous, and endocrine systems.
+                Despite the ban on PCB manufacturing, PCBs persist in the environment and can contaminate meat, dairy, water, and especially fish.
+            </p>
+
+            <h3> Geographical distribution of PCB contamination</h3>
+            <!-- Maps of contamination -->
+            <iframe src="figures/maps/maps_pcbs.html" class="map">
+            </iframe>
+            
+            <p class="text-center text-muted">
+                Use the dropdown to see the map at different points in time.
+                Use the tools at the top right to pan and zoom.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The most recent data for fish (2011-2015) indicate that the safest place to fish in terms of PCBs is off of Berkeley, 
+                and the most hazardous place is the strait between Oakland and Alameda.
+                The most recent data for sediment (2016-2020) indicate high levels of PCB contamination in El Cerrito.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Another way to consider PCB contamination is in terms of the sum of the 209 PCB congeners.
+                However, less data is available for this metric.
+            </p>
+            <!-- Maps of contamination -->
+            <iframe src="figures/maps/maps_sum_of_209_pcbs.html" class="map">
+            </iframe>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                According to this metric, fish off of Berkeley and Vallejo appear safest (most recent data from 2006-2010).
+            </p>
+
+            <h3> PCB concentration over time </h3>
+            
+            <iframe src="figures/timeseries/timeseries_pcbs_fish.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The concentration of PCBs measured in fish spans from 0 to 100 ng/g for individual congeners. 
+                The maximum concentration for any individual congener does not change over time.
+            </p>
+
+            <iframe src="figures/timeseries/timeseries_pcbs_sediment.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                The concentration of PCBs in sediment experienced an enormous spike in San Mateo county in 2010. 
+                Individual congeners recently measured between 0 and 1000 ng/g in sediment.
+            </p>
+
+            <iframe src="figures/timeseries/timeseries_209_pcbs_fish.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                In the USA, the tolerance levels for total PCBs is 2000 ng/g ww (red dashed line, not visible in default view). 
+                Fortunately, none of the fish sampled in the San Francisco Bay in 2009 and 2010 reached this level. 
+                However, in those two years, the level of total PCBs increased.
+            </p>
+
+            <iframe src="figures/timeseries/timeseries_209_pcbs_sediment.html" class="timeseries">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Total PCB levels increased in 2015 and 2016, but have since returned to low levels.
+            </p>
+
+            <h3> Correlation between PCB levels in fish and sediment </h3>
+            <iframe src="figures/comparisons/comparisons_209_pcbs.html" class="comparisons">
+            </iframe>
+            <p class="text-center text-muted">
+                Click on the entries in the legend to show/hide.
+            </p>
+
+            <p class="ml-5 mr-5 mt-3 mb-3">
+                Each data point represents the median concentration of total PCBs in fish and sediment in each county bordering the San Francisco Bay in each year for which data for both was available.
+                The blue line indicates the linear regression. 
+                Although much less data is available for total PCBs than for mercury, increased total PCBs in sediment appears to correlate strongly with total PCBs in fish tissue.
+            </p>
+
+            <div class="text-secondary bg-light pt-1 pb-1 pl-1 pr-1">
+                <h5> Citations </h5>
+                <h6> Data </h6>
+                <ul>
+                    <li>
+                        Contaminant Data Display and Download (CD3), <a href="https://cd3.sfei.org/">SFEI</a>
+                    </li>
+                </ul>
+                <h6> Analysis and visualization software </h6>
+                <p>Python 3.8, NumPy, Pandas, Bokeh, Holoviz, iqplot, bootcamp_utils</p>
+                <h6> Works cited and further reading </h6>
+                <ul>
+                    <li>
+                        "EPA-FDA Fish Advice: Technical Information," <a href="https://www.epa.gov/fish-tech/epa-fda-fish-advice-technical-information">EPA</a>
+                    </li>
+                    <li>
+                        "CFR - Code of Federal Regulations Title 21," <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/cfrsearch.cfm?fr=109.30">FDA</a>
+                    </li>
+                    <li>
+                        "Congener-specific levels and patterns of polychlorinated biphenyls in edible fish tissue from the central Red Sea coast of Saudi Arabia," 
+                        Batang, et al., 2016-12-01, <a href="https://www.sciencedirect.com/science/article/pii/S0048969716316618"><i>Science of The Total Environment</i></a>
+                    </li>
+                    <li>
+                        "Mercury and health," <a href="https://www.who.int/news-room/fact-sheets/detail/mercury-and-health">WHO</a>
+                    </li>
+                    <li>
+                        "I've heard that salmon is high in dangerous PCBs. So what are PCBs and what risk do they pose?," Jennifer K. Nelson, R.D., L.D.,
+                        <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/fish-and-pbcs/faq-20348595">Mayo Clinic</a>
+                    </li>
+                    <li>
+                        "Learn about Polychlorinated Biphenyls (PCBs)," <a href="https://www.epa.gov/pcbs/learn-about-polychlorinated-biphenyls-pcbs">EPA</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
